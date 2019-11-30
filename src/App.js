@@ -8,7 +8,14 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>Teamwork App</p>
-        
+        <a
+          className="App-link"
+          href="https://github.com/sink-opuba/teamwork/tree/gh-pages"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Work in progress
+        </a>
       </header>
     </div>
   );
