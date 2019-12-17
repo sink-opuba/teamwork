@@ -76,10 +76,10 @@ html {
 button {
   padding: 10px;
   border-radius: 5px;
+  color: #ffffff;
   border: 1px solid #dddddd;
   background: transparent;
   transition: all 0.2s;
-  color: #ffffff;
   cursor: pointer;
 }
 

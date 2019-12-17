@@ -2,7 +2,7 @@
   position: relative;
   min-height: 100vh;
   background: linear-gradient(rgba(55, 77, 118, 0.8), rgba(56, 78, 119, 0.8)),
-    url(./teamwork2.jpg) no-repeat fixed;
+    url(../teamwork2.jpg) no-repeat fixed;
   background-size: cover;
 }
 .App-nav {
