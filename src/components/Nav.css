@@ -1,0 +1,40 @@
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.nav a {
+  margin: 1.4rem;
+}
+.nav button {
+  padding: 0.8rem 2rem;
+  align-self: baseline;
+  margin: 2rem;
+  border-radius: 20px;
+}
+.nav button:hover {
+  background-color: #fff;
+  color: rgb(39, 62, 80);
+}
+
+@media (max-width: 768px) {
+  .nav-link {
+    font-size: 2.4rem;
+  }
+  .nav a {
+    margin: 1rem;
+  }
+}
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 3rem;
+}
+
+.bg-text, .bg-text a, .bg-text button {
+  color: #5F7192;
+}
+
+.bg-text button {
+    border: 1px solid #5F7192;
+}
