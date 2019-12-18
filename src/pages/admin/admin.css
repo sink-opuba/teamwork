@@ -1,0 +1,17 @@
+.admin-container {
+  display: flex;
+  justify-content: space-between;
+  background: linear-gradient(rgba(55, 77, 118, 0.8), rgba(56, 78, 119, 0.8));
+  margin: 3rem 0 2rem 0;
+  padding: 2.5rem 1rem 2.5rem 1rem;
+}
+
+.admin-container h2 {
+  font-size: 2rem;
+}
+
+@media (max-width: 400px) {
+    .admin-container h2 {
+        font-size: 1.5rem;
+    }
+}
