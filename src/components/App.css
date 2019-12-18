@@ -5,24 +5,6 @@
     url(../teamwork2.jpg) no-repeat fixed;
   background-size: cover;
 }
-.App-nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.App-nav a {
-  margin: 1.4rem;
-}
-.App-nav button {
-  padding: 0.8rem 2rem;
-  align-self: baseline;
-  margin: 2rem;
-  border-radius: 20px;
-}
-.App-nav button:hover {
-  background-color: #fff;
-  color: rgb(39, 62, 80);
-}
 .App-header {
   position: absolute;
   top: 40%;
@@ -39,12 +21,6 @@
   font-size: 2rem;
 }
 @media (max-width: 768px) {
-  .App-link {
-    font-size: 2.4rem;
-  }
-  .App-nav a {
-    margin: 1.2rem;
-  }
   .App-header h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
@@ -62,9 +38,4 @@
 }
 .App-header button:hover {
   transform: scaleX(1.2) scaleY(1.2);
-}
-.App-link {
-  color: #fff;
-  text-decoration: none;
-  font-size: 3rem;
 }
