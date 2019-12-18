@@ -1,15 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Route, BrowserRouter as Router } from "react-router-dom";
+import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
 import App from "./components/App";
 import Login from "./pages/login/login";
+import Admin from "./pages/admin/admin";
 import * as serviceWorker from "./serviceWorker";
 
 const Routing = () => (
   <Router>
-    <Route exact path="/" component={App} />
-    <Route path="/login" component={Login} />
+    <Switch>
+      <Route exact path="/" component={App} />
+      <Route path="/login" component={Login} />
+      <Route path="/admin" component={Admin} />
+    </Switch>
   </Router>
 );
 
