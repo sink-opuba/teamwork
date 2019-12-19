@@ -4,14 +4,15 @@ import "./CreateUserForm.css";
 const createUserForm = () => {
   return (
     <div className="create-user-container">
-      <form>
+      <form className="create-user-form">
         <div className="form-group">
           <label for="firstname">Firstname</label>
-          <input type="text" id="firstname" className="form-input" required />
+          <input value="Sink" type="text" id="firstname" className="form-input" required />
         </div>
         <div className="form-group">
           <label for="lastname">Lastname</label>
           <input
+          
             type="lastname"
             id="lastname"
             className="form-input"
@@ -40,14 +41,25 @@ const createUserForm = () => {
         </div>
         <div className="form-group">
           <label for="isadmin">Admin</label>
-          <select id="isadmin">
+          <select id="isadmin" className="form-input">
             <option value="false" selected>
               No
             </option>
             <option value="true">Yes</option>
           </select>
         </div>
-        <button type="submit">Add User</button>
+        <div className="form-group">
+          <label for="gender">Gender</label>
+          <select id="gender" className="form-input">
+            <option value="Female" selected>
+              Female
+            </option>
+            <option value="Male">Male</option>
+          </select>
+        </div>
+        <button className="create-user-button btn-white" type="submit">
+          Submit
+        </button>
       </form>
     </div>
   );
