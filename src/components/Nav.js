@@ -6,9 +6,9 @@ const Nav = ({ isLoggedIn, bgText }) => {
   return (
     <nav className={`nav ${bgText}`}>
       <Link to="/">
-        <a href className="nav-link">
+        <span className="nav-link">
           TeamWork
-        </a>
+        </span>
       </Link>
       {isLoggedIn ? (
         <button>Logout</button>

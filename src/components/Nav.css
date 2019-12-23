@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: space-between;
 }
-.nav a {
+.nav span {
   margin: 1.4rem;
 }
 .nav button {
@@ -22,7 +22,7 @@
   font-size: 3rem;
 }
 @media (max-width: 600px) {
-  .nav a {
+  .nav span {
     margin: .5rem;
     font-size: 2rem;
   }
@@ -34,7 +34,7 @@
 }
 }
 
-.bg-text, .bg-text a, .bg-text button {
+.bg-text, .bg-text span, .bg-text button {
   color: #5F7192;
 }
 
