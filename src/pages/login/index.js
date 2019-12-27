@@ -3,7 +3,10 @@ import { PropTypes } from "prop-types";
 import { Redirect } from "react-router-dom";
 import "./index.css";
 import Loading from "../../components/Loading";
-const URL = "http://localhost:8000/api/v1/auth/signin";
+const URL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:8000/api/v1/auth/signin"
+    : "https://sink-teamwork-api.herokuapp.com/api/v1/auth/signin";
 
 const Login = ({ setLoginStatus, isAuthed }) => {
   const [inputVal, setInputVal] = useState({ email: "", password: "" });
@@ -29,7 +32,7 @@ const Login = ({ setLoginStatus, isAuthed }) => {
         setUserData(res.data);
       })
       .catch(err => {
-        console.log(err)
+        console.log(err);
         setIsLoading(false);
         setError({ status: "error", msg: err.message });
       });
