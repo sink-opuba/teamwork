@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import "./index.css";
 import Nav from "../../components/Nav";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { firstLetterToUppercase as toUpper } from "../../utils";
 
 const User = ({ isAuthed, logOut, data }) => {
   const [toggleView, setToggleView] = useState(true);
@@ -14,14 +15,14 @@ const User = ({ isAuthed, logOut, data }) => {
   return (
     <>
       {/* if user is not logged in, redirect to login page */}
-      {!data ? (
+      {!data.userId ? (
         <Redirect to="/login" />
       ) : (
         <>
           <Nav isLoggedIn={isAuthed} bgText="bg-text" logOut={logOut} />
           <main className="main-container">
             <h2>
-              Greetings! ${"User"}{" "}
+              Greetings! {toUpper(data.lastname)}{" "}
               {isAdmin && (
                 <Link to="/admin">
                   <span className="role-text">- Admin</span>{" "}

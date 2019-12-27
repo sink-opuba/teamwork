@@ -4,6 +4,8 @@ import { PropTypes } from "prop-types";
 import "./index.css";
 import Nav from "../../components/Nav";
 import CreateUserForm from "../../components/CreateUserForm";
+import { firstLetterToUppercase as toUpper } from "../../utils";
+
 
 const Admin = ({ isAuthed, logOut, data }) => {
   const [showForm, setShowForm] = useState(false);
@@ -17,7 +19,7 @@ const Admin = ({ isAuthed, logOut, data }) => {
         <>
           <Nav isLoggedIn={isAuthed} logOut={logOut} bgText="bg-text" />
           <main className="main-container">
-            <h2>Welcome ${"AdminName"}</h2>
+            <h2>Welcome {toUpper(data.lastname)}</h2>
             {!showForm && (
               <button className="btn-white" onClick={() => setShowForm(true)}>
                 Add User

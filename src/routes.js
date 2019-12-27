@@ -14,7 +14,7 @@ const Routes = () => {
     localStorage.removeItem("data");
     setLogin(false);
   };
-  const userData = JSON.parse(localStorage.getItem("data"));
+  const userData = JSON.parse(localStorage.getItem("data")) || {};
 
   return (
     <Router>
@@ -26,7 +26,7 @@ const Routes = () => {
         />
         <Route
           path="/login"
-          render={props => <Login {...props} setLoginStatus={setLogin} />}
+          render={props => <Login {...props} setLoginStatus={setLogin} isAuthed={login} />}
         />
         <Route
           path="/admin"
