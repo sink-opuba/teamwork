@@ -21,6 +21,7 @@
 }
 .form-group {
   margin-bottom: 2rem;
+  margin-left: 1.2rem;
 }
 .form-group label {
   display: block;
@@ -35,9 +36,19 @@
   border: none;
   width: 90%;
   display: block;
-  transition: all 0.3s;
+  transition: border-color 1s ease-out;
 }
 
+.form-input:focus {
+  outline: none;
+}
+.form-input:focus:invalid {
+  border-bottom: 2px solid red;
+}
+
+.form-input:focus:valid {
+  border-bottom: 2px solid green;
+}
 .login-button {
   display: inline-block;
   font-size: 1.6rem;
@@ -47,4 +58,9 @@
 }
 .login-button:hover {
   transform: scaleX(1.1) scaleY(1.1);
+}
+
+.login-error {
+  font-size: 1rem;
+  text-align: center;
 }

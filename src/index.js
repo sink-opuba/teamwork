@@ -9,18 +9,37 @@ import * as serviceWorker from "./serviceWorker";
 import User from "./pages/user";
 import NotFound from "./components/NotFound";
 
-const Routing = () => (
-  <Router>
-    <Switch>
-      <Route exact path="/" component={App} />
-      <Route path="/login" component={Login} />
-      <Route path="/admin" component={Admin} />
-      <Route path="/user" component={User} />
-      <Route component={NotFound} />
-    </Switch>
-  </Router>
-);
+const Routing = () => {
+  const [login, setLogin] = React.useState(
+    localStorage.getItem("data") ? true : false
+  );
+  const logOut = () => {
+    localStorage.removeItem("data");
+    setLogin(false);
+  };
 
+  return (
+    <Router>
+      <Switch>
+        <Route
+          exact
+          path="/"
+          render={props => <App {...props} isAuthed={login} logOut={logOut} />}
+        />
+        <Route
+          path="/login"
+          render={props => <Login {...props} setLogin={setLogin} />}
+        />
+        <Route path="/admin" component={Admin} />
+        <Route
+          path="/user"
+          render={props => <User {...props} isAuthed={login} logOut={logOut} />}
+        />
+        <Route component={NotFound} />
+      </Switch>
+    </Router>
+  );
+};
 ReactDOM.render(<Routing />, document.getElementById("root"));
 
 //Hot Module Replacement
