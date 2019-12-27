@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { PropTypes } from "prop-types";
 import { Redirect } from "react-router-dom";
 import "./index.css";
 import Loading from "../../components/Loading";
 const URL = "http://localhost:8000/api/v1/auth/signin";
 
-const Login = ({ setLogin }) => {
+const Login = ({ setLoginStatus }) => {
   const [inputVal, setInputVal] = useState({ email: "", password: "" });
   const [error, setError] = useState({ status: null, msg: "" });
   const [isLoading, setIsLoading] = useState(false);
@@ -50,7 +51,7 @@ const Login = ({ setLogin }) => {
   const setUserData = data => {
     localStorage.setItem("data", JSON.stringify(data));
     setData(data);
-    setLogin(true);
+    setLoginStatus(true);
   };
   if (data) {
     return <Redirect to="/user" />;
@@ -94,4 +95,7 @@ const Login = ({ setLogin }) => {
   );
 };
 
+Login.propTypes = {
+  setLoginStatus: PropTypes.func.isRequired
+};
 export default Login;

@@ -2,8 +2,9 @@ import React from "react";
 import "./App.css";
 import Nav from "./Nav";
 import { Link } from "react-router-dom";
+import { PropTypes } from "prop-types";
 
-function App({isAuthed, logOut}) {
+function App({ isAuthed, logOut }) {
   return (
     <div className="App">
       <Nav isLoggedIn={isAuthed} logOut={logOut} />
@@ -17,5 +18,10 @@ function App({isAuthed, logOut}) {
     </div>
   );
 }
+
+App.propTypes = {
+  isAuthed: PropTypes.bool.isRequired,
+  logOut: PropTypes.func.isRequired
+};
 
 export default App;

@@ -1,46 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
-import App from "./components/App";
-import Login from "./pages/login";
-import Admin from "./pages/admin";
+import Routes from "./routes";
 import * as serviceWorker from "./serviceWorker";
-import User from "./pages/user";
-import NotFound from "./components/NotFound";
 
-const Routing = () => {
-  const [login, setLogin] = React.useState(
-    localStorage.getItem("data") ? true : false
-  );
-  const logOut = () => {
-    localStorage.removeItem("data");
-    setLogin(false);
-  };
-
-  return (
-    <Router>
-      <Switch>
-        <Route
-          exact
-          path="/"
-          render={props => <App {...props} isAuthed={login} logOut={logOut} />}
-        />
-        <Route
-          path="/login"
-          render={props => <Login {...props} setLogin={setLogin} />}
-        />
-        <Route path="/admin" component={Admin} />
-        <Route
-          path="/user"
-          render={props => <User {...props} isAuthed={login} logOut={logOut} />}
-        />
-        <Route component={NotFound} />
-      </Switch>
-    </Router>
-  );
-};
-ReactDOM.render(<Routing />, document.getElementById("root"));
+ReactDOM.render(<Routes />, document.getElementById("root"));
 
 //Hot Module Replacement
 if (module.hot) {

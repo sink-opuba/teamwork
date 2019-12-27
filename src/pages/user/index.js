@@ -1,14 +1,14 @@
 import React, { useState } from "react";
+import { PropTypes } from "prop-types";
 import { Redirect } from "react-router-dom";
 import "./index.css";
 import Nav from "../../components/Nav";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
-const User = ({ isAuthed, logOut }) => {
+const User = ({ isAuthed, logOut, data }) => {
   const [toggleView, setToggleView] = useState(true);
   const onToggleView = () => setToggleView(!toggleView);
   // get loggedin user data from localStorage
-  const data = JSON.parse(localStorage.getItem("data"));
   const isAdmin = data && data.isAdmin;
 
   return (
@@ -141,4 +141,9 @@ const User = ({ isAuthed, logOut }) => {
   );
 };
 
+User.propTypes = {
+  isAuthed: PropTypes.bool.isRequired,
+  logOut: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired
+};
 export default User;
