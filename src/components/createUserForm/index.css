@@ -1,0 +1,30 @@
+.create-user-container {
+  background-color: #5f7192;
+}
+
+.create-user-form {
+  width: 60%;
+  margin: 0 auto;
+  padding: 2rem;
+  font-size: 1.5rem;
+}
+@media (max-width: 600px) {
+    .create-user-form {
+        width: 90%;
+    }
+}
+
+.create-user-button {
+  font-size: inherit;
+  margin-top: 1rem;
+}
+
+.btn-white:hover {
+  background: #fff;
+  color: #5f7192;
+  border: 1px solid #5f7192;
+}
+.password-note {
+  font-size: .8rem;
+  font-weight: lighter;
+}
