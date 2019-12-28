@@ -90,3 +90,8 @@ button:active {
 button:focus {
   outline: none;
 }
+
+.error-text {
+  font-size: 1rem;
+  text-align: center;
+}
