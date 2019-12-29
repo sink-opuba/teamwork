@@ -1,0 +1,36 @@
+.post-article-container {
+  max-width: 60%;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  padding: 2rem 1rem;
+  color: #000;
+  margin: 3rem auto;
+}
+
+@media (max-width: 600px) {
+  .post-article-container {
+    max-width: 90%;
+  }
+}
+
+.post-article-header {
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+.post-article-form {
+    overflow: hidden;
+}
+.post-article-form label {
+  font-size: 1.3rem;
+  padding-top: 2rem;
+  display: unset;
+}
+
+.post-article-form button {
+  background: var(--color-primary);
+  float: right;
+  border-radius: 48%;
+  padding: .8rem 1.5rem;
+  margin-right: 3rem;
+}
