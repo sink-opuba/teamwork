@@ -38,7 +38,7 @@ const createUserForm = ({
   return (
     <div className="create-user-container">
       <p style={closeFormStyle}>
-        <span title="Close" onClick={() => closeForm()}>
+        <span title="Close Form" onClick={() => closeForm()}>
           &times;
         </span>
       </p>
