@@ -3,6 +3,7 @@ import { PropTypes } from "prop-types";
 import { Redirect } from "react-router-dom";
 import "./index.css";
 import Loading from "../../components/Loading";
+import ErrorMessage from "../../components/ErrorMessage";
 const URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:8000/api/v1/auth/signin"
@@ -10,34 +11,33 @@ const URL =
 
 const Login = ({ setLoginStatus, isAuthed }) => {
   const [inputVal, setInputVal] = useState({ email: "", password: "" });
-  const [error, setError] = useState({ status: null, msg: "" });
+  const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = event => {
     //hide error message
-    setError({ status: null, msg: "" });
+    setError(null);
     const { name, value } = event.target;
     setInputVal({ ...inputVal, [name]: value.trim() });
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = async event => {
+    event.preventDefault();
     setIsLoading(true);
     const data = inputVal;
-    postData(URL, data)
-      .then(res => {
-        setIsLoading(false);
-        if (res.status === "error") {
-          throw new Error(res.error);
-        }
-        setUserData(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-        setIsLoading(false);
-        setError({ status: "error", msg: err.message });
+    try {
+      const res = await postData(URL, data);
+      setIsLoading(false);
+      if (res.status === "error") {
+        throw new Error(res.error);
+      }
+      setUserData(res.data);
+    } catch (err) {
+      setError({
+        status: "error",
+        msg: err.message
       });
-    setInputVal({ email: "", password: "" });
-    event.preventDefault();
+    }
   };
 
   const postData = async (url, data) => {
@@ -86,7 +86,7 @@ const Login = ({ setLoginStatus, isAuthed }) => {
               onChange={handleChange}
             />
           </div>
-          {error.status && <p className="login-error">Error: {error.msg}</p>}
+          {error && <ErrorMessage message={error.msg} />}
           {isLoading && <Loading size="1x" />}
           <button type="submit" className="login-button">
             Login

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { PropTypes } from "prop-types";
 import { Redirect } from "react-router-dom";
 import "./index.css";
-import Nav from "../../components/Nav";
+import Nav from "../../components/nav";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { firstLetterToUppercase as toUpper } from "../../utils";
 
