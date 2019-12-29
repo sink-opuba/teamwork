@@ -33,7 +33,6 @@ const Admin = ({ isAuthed, logOut, data }) => {
   const { token, lastname } = data;
   const handleAddUser = async data => {
     setLoading(true);
-    setTimeout(async () => {
       try {
         const result = await postData(URL, data);
         setLoading(false);
@@ -48,8 +47,7 @@ const Admin = ({ isAuthed, logOut, data }) => {
           status: "error",
           msg: error.message
         });
-      }
-    }, 3000);
+      } 
   };
 
   const postData = async (url, data) => {

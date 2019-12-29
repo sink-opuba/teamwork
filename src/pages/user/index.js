@@ -5,12 +5,21 @@ import "./index.css";
 import Nav from "../../components/nav";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { firstLetterToUppercase as toUpper } from "../../utils";
+import Articles from "../../components/articles";
+import Gifs from "../../components/gifs";
 
 const User = ({ isAuthed, logOut, data }) => {
   const [toggleView, setToggleView] = useState(true);
-  const onToggleView = () => setToggleView(!toggleView);
   // get loggedin user data from localStorage
   const isAdmin = data && data.isAdmin;
+
+  const viewArticles = () => {
+    setToggleView(false);
+  };
+
+  const viewGifs = () => {
+    setToggleView(true);
+  };
 
   return (
     <>
@@ -31,110 +40,19 @@ const User = ({ isAuthed, logOut, data }) => {
             </h2>
             <div>
               {toggleView ? (
-                <button className="small-btn btn-white" onClick={onToggleView}>
-                  View GIFs
+                <button className="small-btn btn-white" onClick={viewArticles}>
+                  View Articles
                 </button>
               ) : (
-                <button className="small-btn btn-white" onClick={onToggleView}>
-                  View Articles
+                <button className="small-btn btn-white" onClick={viewGifs}>
+                  View Gifs
                 </button>
               )}
             </div>
           </main>
           <div className="post-view">
-            <ul className="message-pane">
-              <li>
-                <div className="message-box">
-                  <h3 className="message-title"> The title of the text </h3>
-                  <span className="message-date">Dec 20</span>
-                  <p className="message">
-                    Some text. I want to increase the text content
-                  </p>
-                </div>
-              </li>
-              <li>
-                <div className="message-box">
-                  <h3 className="message-title"> A brief title </h3>
-                  <span className="message-date">Dec 20</span>
-                  <p className="message">Just a brief article</p>
-                </div>
-              </li>
+            {!toggleView ? <Articles /> : <Gifs />}
 
-              <li>
-                <div className="message-box">
-                  <h3 className="message-title"> The title of the text </h3>
-                  <span className="message-date">Dec 20</span>
-                  <p className="message">
-                    Some text. I want to increase the text content
-                  </p>
-                </div>
-              </li>
-
-              <li>
-                <div className="message-box">
-                  <h3 className="message-title"> The title of the text </h3>
-                  <span className="message-date">Dec 20</span>
-                  <p className="message">
-                    Some text. I want to increase the text content
-                  </p>
-                </div>
-              </li>
-              <li>
-                <div className="message-box">
-                  <h3 className="message-title"> The title of the text </h3>
-                  <span className="message-date">Dec 20</span>
-                  <p className="message">
-                    Some text. I want to increase the text content
-                  </p>
-                </div>
-              </li>
-
-              <li>
-                <div className="message-box">
-                  <h3 className="message-title"> The title of the text </h3>
-                  <span className="message-date">Dec 20</span>
-                  <p className="message">
-                    Some text. I want to increase the text content
-                  </p>
-                </div>
-              </li>
-
-              <li>
-                <div className="message-box">
-                  <h3 className="message-title"> The title of the text </h3>
-                  <span className="message-date">Dec 20</span>
-                  <p className="message">
-                    Some text. I want to increase the text content
-                  </p>
-                </div>
-              </li>
-
-              <li>
-                <div className="message-box">
-                  <h3 className="message-title"> The title of the text </h3>
-                  <span className="message-date">Dec 20</span>
-                  <p className="message">
-                    Some text. I want to increase the text content
-                  </p>
-                </div>
-              </li>
-            </ul>
-
-            <div className="post-article-box">
-              <h3 className="post-article-heading">Post Your Own Article</h3>
-              <form className="post-article-form">
-                <label htmlFor="article-title">Title</label>
-                <input
-                  type="text"
-                  className="form-input"
-                  id="article-title"
-                  name="article-title"
-                />
-                <label htmlFor="article-body">Body</label>
-                <textarea className="article-body" id="article-body"></textarea>
-                <button type="submit">Post</button>
-              </form>
-            </div>
           </div>{" "}
         </>
       )}

@@ -22,6 +22,7 @@ const Login = ({ setLoginStatus, isAuthed }) => {
   };
 
   const handleSubmit = async event => {
+    setError(null);
     event.preventDefault();
     setIsLoading(true);
     const data = inputVal;
@@ -33,6 +34,7 @@ const Login = ({ setLoginStatus, isAuthed }) => {
       }
       setUserData(res.data);
     } catch (err) {
+      setIsLoading(false);
       setError({
         status: "error",
         msg: err.message
