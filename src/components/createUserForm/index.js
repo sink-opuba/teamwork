@@ -4,13 +4,7 @@ import { PropTypes } from "prop-types";
 import ErrorMessage from "../ErrorMessage";
 import Loading from "../Loading";
 import Modal from "../modal";
-const closeFormStyle = {
-  textAlign: "right",
-  marginRight: "2.5rem",
-  marginTop: "1rem",
-  fontSize: "2rem",
-  cursor: "pointer"
-};
+
 const createUserForm = ({
   formValue,
   setFormValue,
@@ -37,7 +31,7 @@ const createUserForm = ({
   };
   return (
     <div className="create-user-container">
-      <p style={closeFormStyle}>
+      <p className="close-form">
         <span title="Close Form" onClick={() => closeForm()}>
           &times;
         </span>

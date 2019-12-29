@@ -1,0 +1,31 @@
+.message-pane li {
+  list-style: none;
+}
+
+.message-box {
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 5px;
+  color: #000000;
+  padding: 0.6rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: lighter;
+  position: relative;
+}
+
+.message-title {
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .message-date {
+    font-size: 1.2rem;
+  }
+  .message-title {
+    font-size: inherit;
+  }
+  .message {
+    font-size: inherit;
+  }
+}
