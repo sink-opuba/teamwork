@@ -5,6 +5,7 @@ import "./index.css";
 import Nav from "../../components/nav";
 import CreateUserForm from "../../components/createUserForm";
 import { firstLetterToUppercase as toUpper } from "../../utils";
+import axios from "axios";
 
 const URL =
   process.env.NODE_ENV === "development"
@@ -33,33 +34,29 @@ const Admin = ({ isAuthed, logOut, data }) => {
   const { token, lastname } = data;
   const handleAddUser = async data => {
     setLoading(true);
-      try {
-        const result = await postData(URL, data);
-        setLoading(false);
-        if (result.status === "error") {
-          throw new Error(result.error);
-        }
-        setFormValue(defaultFormValue);
-        const { email, password } = data;
-        setNewUser({ email, password });
-      } catch (error) {
-        setError({
-          status: "error",
-          msg: error.message
-        });
-      } 
-  };
-
-  const postData = async (url, data) => {
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`
-      },
-      body: JSON.stringify(data)
-    });
-    return await response.json();
+    try {
+      const response = await axios({
+        url: URL,
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        },
+        data: data
+      });
+      setLoading(false);
+      setFormValue(defaultFormValue);
+      console.log(response);
+      const { email, password } = JSON.parse(response.config.data);
+      setNewUser({ email, password });
+    } catch (error) {
+      setLoading(false);
+      const { data } = error.response;
+      setError({
+        status: "error",
+        msg: data.error
+      });
+    }
   };
   return (
     <>

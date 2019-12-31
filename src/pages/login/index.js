@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import { PropTypes } from "prop-types";
 import { Redirect } from "react-router-dom";
 import "./index.css";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
+import axios from "axios";
 const URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:8000/api/v1/auth/signin"
@@ -27,30 +28,17 @@ const Login = ({ setLoginStatus, isAuthed }) => {
     setIsLoading(true);
     const data = inputVal;
     try {
-      const res = await postData(URL, data);
+      const response = await axios.post(URL, data);
       setIsLoading(false);
-      if (res.status === "error") {
-        throw new Error(res.error);
-      }
-      setUserData(res.data);
-    } catch (err) {
+      setUserData(response.data.data);
+    } catch (error) {
       setIsLoading(false);
+      const { data } = error.response;
       setError({
         status: "error",
-        msg: err.message
+        msg: data.error
       });
     }
-  };
-
-  const postData = async (url, data) => {
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    });
-    return await response.json();
   };
 
   const setUserData = data => {
@@ -58,7 +46,7 @@ const Login = ({ setLoginStatus, isAuthed }) => {
     setLoginStatus(true);
   };
   return (
-    <React.Fragment>
+    <Fragment>
       {isAuthed && <Redirect to="/user" />}
       <div className="login-container">
         <form className="login-form" onSubmit={handleSubmit}>
@@ -95,7 +83,7 @@ const Login = ({ setLoginStatus, isAuthed }) => {
           </button>
         </form>
       </div>
-    </React.Fragment>
+    </Fragment>
   );
 };
 
