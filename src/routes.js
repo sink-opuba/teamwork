@@ -17,7 +17,7 @@ const Routes = () => {
   const userData = JSON.parse(localStorage.getItem("data")) || {};
 
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router basename="/">
       <Switch>
         <Route
           exact
