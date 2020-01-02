@@ -4,7 +4,7 @@ import App from "./components/app";
 import Login from "./pages/login";
 import Admin from "./pages/admin";
 import User from "./pages/user";
-import NotFound from "./components/NotFound";
+// import NotFound from "./components/NotFound";
 
 const Routes = () => {
   const [login, setLogin] = React.useState(
@@ -48,7 +48,7 @@ const Routes = () => {
             <User {...props} isAuthed={login} logOut={logOut} data={userData} />
           )}
         />
-        <Route component={NotFound} />
+        {/* <Route component={NotFound} /> */}
       </Switch>
     </Router>
   );
