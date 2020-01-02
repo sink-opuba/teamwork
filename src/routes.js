@@ -17,21 +17,21 @@ const Routes = () => {
   const userData = JSON.parse(localStorage.getItem("data")) || {};
 
   return (
-    <Router basename="/">
+    <Router basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route
           exact
-          path="/"
+          path={process.env.PUBLIC_URL + "/"}
           render={props => <App {...props} isAuthed={login} logOut={logOut} />}
         />
         <Route
-          path="/login"
+          path={process.env.PUBLIC_URL + "/login"}
           render={props => (
             <Login {...props} setLoginStatus={setLogin} isAuthed={login} />
           )}
         />
         <Route
-          path="/admin"
+          path={process.env.PUBLIC_URL + "/admin"}
           render={props => (
             <Admin
               {...props}
@@ -43,7 +43,7 @@ const Routes = () => {
           )}
         />
         <Route
-          path="/user"
+          path={process.env.PUBLIC_URL + "/user"}
           render={props => (
             <User {...props} isAuthed={login} logOut={logOut} data={userData} />
           )}

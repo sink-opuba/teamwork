@@ -11,7 +11,7 @@ function App({ isAuthed, logOut }) {
       <header className="App-header">
         <h1>Let's Connect as We Work Together</h1>
         <p>- Post Gifs, Articles, Comments and more...</p>
-        <Link to="/user">
+        <Link to={process.env.PUBLIC_URL + "/user"}>
           <button>Get Started</button>
         </Link>
       </header>

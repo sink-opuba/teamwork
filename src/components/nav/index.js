@@ -6,13 +6,13 @@ import { PropTypes } from "prop-types";
 const Nav = ({ isLoggedIn, bgText, logOut }) => {
   return (
     <nav className={`nav ${bgText}`}>
-      <Link to="/">
+      <Link to={process.env.PUBLIC_URL + "/"}>
         <span className="nav-link">TeamWork</span>
       </Link>
       {isLoggedIn ? (
         <button onClick={logOut}>Logout</button>
       ) : (
-        <Link to="/login">
+        <Link to={process.env.PUBLIC_URL + "/login"}>
           <button>Login</button>
         </Link>
       )}
