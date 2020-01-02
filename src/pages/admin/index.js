@@ -5,12 +5,7 @@ import "./index.css";
 import Nav from "../../components/nav";
 import CreateUserForm from "../../components/createUserForm";
 import { firstLetterToUppercase as toUpper } from "../../utils";
-import axios from "axios";
-
-const URL =
-  process.env.NODE_ENV === "development"
-    ? "http://localhost:8000/api/v1/auth/create-user"
-    : "https://sink-teamwork-api.herokuapp.com/api/v1/auth/create-user";
+import API from "../../api";
 const defaultFormValue = {
   firstName: "",
   lastName: "",
@@ -31,22 +26,12 @@ const Admin = ({ isAuthed, logOut, data }) => {
   const [newUser, setNewUser] = useState(null);
 
   const isAdmin = data && data.isAdmin;
-  const { token, lastname } = data;
   const handleAddUser = async data => {
     setLoading(true);
     try {
-      const response = await axios({
-        url: URL,
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`
-        },
-        data: data
-      });
+      const response = await API.post("/auth/create-user", data);
       setLoading(false);
       setFormValue(defaultFormValue);
-      console.log(response);
       const { email, password } = JSON.parse(response.config.data);
       setNewUser({ email, password });
     } catch (error) {
@@ -66,7 +51,7 @@ const Admin = ({ isAuthed, logOut, data }) => {
         <>
           <Nav isLoggedIn={isAuthed} logOut={logOut} bgText="bg-text" />
           <main className="main-container">
-            <h2>Welcome {toUpper(lastname)}</h2>
+            <h2>Welcome {toUpper(data.lastname)}</h2>
             {!showForm && (
               <button className="btn-white" onClick={() => setShowForm(true)}>
                 Add User

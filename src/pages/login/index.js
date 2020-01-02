@@ -4,11 +4,7 @@ import { Redirect } from "react-router-dom";
 import "./index.css";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
-import axios from "axios";
-const URL =
-  process.env.NODE_ENV === "development"
-    ? "http://localhost:8000/api/v1/auth/signin"
-    : "https://sink-teamwork-api.herokuapp.com/api/v1/auth/signin";
+import API from "../../api";
 
 const Login = ({ setLoginStatus, isAuthed }) => {
   const [inputVal, setInputVal] = useState({ email: "", password: "" });
@@ -28,7 +24,7 @@ const Login = ({ setLoginStatus, isAuthed }) => {
     setIsLoading(true);
     const data = inputVal;
     try {
-      const response = await axios.post(URL, data);
+      const response = await API.post("auth/signin", data);
       setIsLoading(false);
       setUserData(response.data.data);
     } catch (error) {
@@ -77,7 +73,7 @@ const Login = ({ setLoginStatus, isAuthed }) => {
             />
           </div>
           {error && <ErrorMessage message={error.msg} />}
-          {isLoading && <Loading size="1x" />}
+          {isLoading && <Loading size="1x" color="#fff" />}
           <button type="submit" className="login-button">
             Login
           </button>
