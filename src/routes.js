@@ -17,7 +17,7 @@ const Routes = () => {
   const userData = JSON.parse(localStorage.getItem("data")) || {};
 
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route
           exact
@@ -26,7 +26,9 @@ const Routes = () => {
         />
         <Route
           path="/login"
-          render={props => <Login {...props} setLoginStatus={setLogin} isAuthed={login} />}
+          render={props => (
+            <Login {...props} setLoginStatus={setLogin} isAuthed={login} />
+          )}
         />
         <Route
           path="/admin"
