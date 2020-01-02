@@ -18,9 +18,13 @@
   text-align: center;
 }
 
+.message-date {
+  font-size: 1.1rem;
+}
+
 @media (max-width: 600px) {
   .message-date {
-    font-size: 1.2rem;
+    font-size: 0.8rem;
   }
   .message-title {
     font-size: inherit;

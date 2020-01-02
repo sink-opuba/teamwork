@@ -10,15 +10,16 @@ import Gifs from "../../components/gifs";
 
 const User = ({ isAuthed, logOut, data }) => {
   const [toggleView, setToggleView] = useState(true);
+  const [session, setSession ] = useState(true);
   // get loggedin user data from localStorage
   const isAdmin = data && data.isAdmin;
 
   const viewArticles = () => {
-    setToggleView(false);
+    setToggleView(true);
   };
 
   const viewGifs = () => {
-    setToggleView(true);
+    setToggleView(false);
   };
 
   return (
@@ -40,19 +41,18 @@ const User = ({ isAuthed, logOut, data }) => {
             </h2>
             <div>
               {toggleView ? (
-                <button className="small-btn btn-white" onClick={viewArticles}>
-                  View Articles
-                </button>
-              ) : (
                 <button className="small-btn btn-white" onClick={viewGifs}>
                   View Gifs
+                </button>
+              ) : (
+                <button className="small-btn btn-white" onClick={viewArticles}>
+                  View Articles
                 </button>
               )}
             </div>
           </main>
           <div className="post-view">
-            {!toggleView ? <Articles /> : <Gifs />}
-
+            {toggleView ? <Articles logOut={logOut} userSession={session} setUserSession={setSession} /> : <Gifs />}
           </div>{" "}
         </>
       )}

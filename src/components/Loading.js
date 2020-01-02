@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { PropTypes } from "prop-types";
 
-const Loading = ({color, size}) => (
-  <div style={{ color: { color }, textAlign: "center" }}>
+const Loading = ({ color, size }) => (
+  <div style={{ color, textAlign: "center" }}>
     <FontAwesomeIcon icon={faSpinner} spin size={size} />
   </div>
 );
